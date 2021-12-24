@@ -75,19 +75,11 @@
             $query = "INSERT INTO Clienti (nume , prenume , email , parola , numar_card, data_nasterii) 
                   VALUES('$var1','$var2','$var3','$var4','$var5','$var6')";
             mysqli_query($link, $query);
-            session_start();
-            $_SESSION['id']=$row['id'];
-            $_SESSION['nume']=$var1;
-            $_SESSION['prenume']=$var2;
-            $_SESSION['email']=$var3;
-            $_SESSION['parola']=$var4;
-            $_SESSION['numar_card']=$var5;
-            $_SESSION['data_nasterii']=$var6;
               $aux = 2;
               if($aux == 2){
               ?>
              <script type="text/javascript">
-             window.location = "shop.php";
+             window.location = "login.php";
              </script>      
              <?php
               }else{
