@@ -37,18 +37,18 @@ if(isset($_POST['parola'])){
     mysqli_query($link, $query);
     $_SESSION['parola']=$var2;
 }
-
-$var1=$_SESSION['id'];
-$var2=$_POST['numar_card'];
-$query = "SELECT * FROM Clienti WHERE numar_card = $var2;";
-$result=mysqli_query($link, $query);
-$user=mysqli_fetch_assoc($result);
-if(!$user){
-    if(isset($_POST['numar_card'])){
-        $query = "UPDATE Clienti SET numar_card = '$var2' WHERE id = $var1;";
-        mysqli_query($link, $query);
-        $_SESSION['numar_card']=$var2;
-    }
+if(isset($_POST['numar_card'])){
+    $var1=$_SESSION['id'];
+    $var2=$_POST['numar_card'];
+    $query = "SELECT * FROM Clienti WHERE numar_card = $var2;";
+    $result=mysqli_query($link, $query);
+    $user=mysqli_fetch_assoc($result);
+        if(!$user){
+        
+                $query = "UPDATE Clienti SET numar_card = '$var2' WHERE id = $var1;";
+                mysqli_query($link, $query);
+                $_SESSION['numar_card']=$var2;
+        }
 }
 if(isset($_POST['data_nasterii'])){
     $var1=$_SESSION['id'];

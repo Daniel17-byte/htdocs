@@ -8,9 +8,15 @@
 
  session_start();
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Comenzile mele</title>
     <style>
       .footer {
     margin-top:5%;
@@ -18,9 +24,9 @@
     position: relative;
 }
     </style>
-    </head>
-    <body>
-    <form method="post" action="shop.php" align="right">
+  </head>
+  <body>
+  <form method="post" action="shop.php" align="right">
     <input type="submit" name="con" value="Inapoi">
         </form>
         <h1>Comenzile mele:</h1>
@@ -46,8 +52,11 @@ if ($result = mysqli_query($link, $query))
                 }
                 }}}
                 ?>
-    </body>
-    <footer class="footer">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    
+  </body>
+  <footer class="footer">
         &copy; 2022 E-SHOP designed by <a href="http://lungudaniel.com" target="_blank">LD</a>
     </footer>
 </html>
