@@ -26,9 +26,32 @@
     </style>
   </head>
   <body>
-  <form method="post" action="shop.php" align="right">
-    <input type="submit" name="con" value="Inapoi">
-        </form>
+         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="shop.php">E-shop</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                    <form method="post" action="myaccount.php">
+                    <button class="btn btn-outline-primary" name="con" type="submit">Contul meu</button>
+                    </form>
+                    </li>
+                    <li class="nav-item" style="margin-left:10px;">
+                    <form method="post" action="comenzilemele.php">
+                    <button class="btn btn-outline-primary" name="con" type="submit">Comenzile mele</button>
+                    </form>
+                    </li>
+                </ul>
+                <form method="post" action="main.php" align="right">
+                    <button class="btn btn-outline-danger" name="con" type="submit">Deconecteaza-te!</button>
+                </form>
+                </div>
+            </div>
+            </nav>
+ 
         <h1>Comenzile mele:</h1>
         <div><?php
     $var=$_SESSION['id'];
@@ -36,25 +59,35 @@
 
 if ($result = mysqli_query($link, $query))
 {
+    $nr = 1;
    while($row = mysqli_fetch_assoc($result))
-   {     
+   {  ?>  <div class="card" style="margin: 20px 100px 20px 100px;">
+    <div class="card-header">
+   Comanda #<?php
+   echo $nr;
        foreach($row as $key => $val)
        {
            if($key === 'id_comanda'){
-           ?><div style="border-style: solid;"><br><h3>Id comanda: </h3><?php
+           ?>
+           </div>
+                <div class="card-body">
+           <p class="card-text">Numarul comenzii: <?php
            echo $val;
-           ?><br><?php
+           ?></p><?php
            }
             if($key === 'data_comenzii'){
-                ?><br><h3>Data comenzii: </h3><?php
+                ?><p class="card-text">Data comenzii: <?php
                 echo $val;
-                ?></div><br><?php
+                ?></p>
+                </div>
+                </div><?php
                 }
-                }}}
+                }
+                $nr++;}}
                 ?>
+                </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-    
+                        
   </body>
   <footer class="footer">
         &copy; 2022 E-SHOP designed by <a href="http://lungudaniel.com" target="_blank">LD</a>

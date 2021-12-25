@@ -14,21 +14,44 @@
     text-align:center;
     position: relative;
 }
+
     </style>
   </head>
   <body>
-    <h1>Bine ati venit pe magazinul nostru online!</h1>
-    <h2>Nou aici?</h2>
-    <div class="divs"><button><a href="registration.php" class="register">Inregistreaza-te!</a></button></div>
-    <br>
-    <h2>Ai deja cont?</h2>
-    <div class="divs"><button><a href="login.php" class="login">Conecteaza-te!</a></button></div>
+  <nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">E-shop</span>
+  </div>
+</nav>
+        <h1>Bine ati venit pe magazinul nostru online!</h1>
+        <div class="container" style="margin-top:100px;">
+        <div class="row">
+          <div class="col" align="center">
+          <h2>Nou aici?</h2>
+          <form action="registration.php">
+    <button type="submit" class="btn btn-outline-dark">Inregistreaza-te!</button>
+          </form>
+          </div>
+          <div class="col" align="center">
+          <h2>Ai deja cont?</h2>
+          <form action="login.php">
+    <button type="submit" class="btn btn-outline-dark">Conecteaza-te!</button>
+          </form>
+          </div>
+        </div>
+      </div>
+    
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
+    <script>
+function myFunction() {
+  document.getElementById("demo").style.color = "red";
+}
+</script>
     
   </body>
-  <footer class="footer">
+  <footer class="footer" style="margin-top:300px;">
         &copy; 2022 E-SHOP designed by <a href="http://lungudaniel.com" target="_blank">LD</a>
     </footer>
 </html>

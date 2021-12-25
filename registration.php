@@ -48,34 +48,46 @@ input[type=text]:focus, input[type=datetime]:focus,input[type=number]:focus {
         </style>
   </head>
   <body>
-  <div>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">E-shop</span>
+      </div>
+    </nav>
+
+    <div style="margin-left: 50px;margin-right:300px;">
         <form action="connect.php" method="post">
             <div class="container">
                 <h1>Inregistrare</h1>
-
-                <label for="nume"><b>Nume</b></label>
-                <input type="text" name="nume" placeholder="ex: Lungu" required>
-                
-                <label for="prenume"><b>Prenume</b></label>
-                <input type="text" name="prenume" placeholder="ex: Ilie Daniel" required>
-
-                <label for="email"><b>Email</b></label>
-                <input type="email" name="email" placeholder="ex: lungud63@yahoo.com" required><br><br>
-
-                <label for="parola"><b>Parola</b></label>
-                <input type="password" name="parola" placeholder="ex: parola123" required><br><br>
-                
-                <label for="numar_card"><b>Numar Card</b></label>
-                <input type="number" name="numar_card" placeholder=" ex: 4857-9215" required>
-                
-                <label for="data_nasterii"><b>Data Nasterii</b></label>
-                <input type="datetime-local" name="data_nasterii" placeholder="ex: 11/24/2000" required>
-                
-                <input type="submit" name="create" value="Inregistreaza-te!">
-
+                <div class="mb-3">
+                <label for="nume" class="form-label"><b>Nume:</b></label>
+                <input type="textarea" class="form-control" name="nume" placeholder="ex: Lungu" required>
+                </div>
+                <div class="mb-3">
+                <label for="prenume" class="form-label"><b>Prenume:</b></label>
+                <input type="textarea" class="form-control" name="prenume" placeholder="ex: Ilie Daniel" required>
+                </div>
+                <div class="mb-3">
+                <label for="email" class="form-label"><b>Adresa de e-mail:</b></label>
+                <input type="email" class="form-control" name="email" placeholder="ex: lungud63@yahoo.com" required>
+                </div>
+                <div class="mb-3">
+                <label for="parola" class="form-label"><b>Parola:</b></label>
+                <input type="password" class="form-control" name="parola" placeholder="ex: parola123" required>
+                </div>
+                <div class="mb-3">
+                <label for="numar_card" class="form-label"><b>Numar Card:</b></label>
+                <input type="textarea" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="form-control" min="10000000" max="99999999" name="numar_card" placeholder=" ex: 4857-9215" required>
+                </div>
+                <div class="mb-3">
+                <label for="data_nasterii" class="form-label"><b>Data Nasterii:</b></label>
+                <input type="datetime-local" class="form-control" name="data_nasterii" placeholder="ex: 11/24/2000" required>
+                </div>
+                <button type="submit" name="create" class="btn btn-primary">Inregistreaza-te!</button>
             </div>
         </form>
-    </div>    
+    </div>   
+    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     

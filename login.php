@@ -48,22 +48,26 @@ input[type=text]:focus, input[type=datetime]:focus,input[type=number]:focus {
         </style>
   </head>
   <body>
-  <div>
+      <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">E-shop</span>
+      </div>
+    </nav>
+        
+        <div style="margin-left: 50px;margin-right:300px;"> 
         <form action="connect.php" method="post">
-            <div class="container">
-                <h1>Conectare</h1>
-
-                <label for="email"><b>Email</b></label>
-                <input type="email" name="email" placeholder="ex: lungud63@yahoo.com" required>
-                
-                <label for="parola"><b>Parola</b></label>
-                <input type="password" name="parola" placeholder="ex: parola123" required>
-    
-                <input type="submit" name="con" value="Conecteaza-te!">
-
-            </div>
-        </form>
-    </div>    
+        <h1>Conectare</h1>
+        <div class="mb-3">
+          <label for="email" class="form-label">Adresa de e-mail:</label>
+          <input type="email" class="form-control" name="email" placeholder="ex: lungud63@yahoo.com" required>
+        </div>
+        <div class="mb-3">
+          <label for="parola" class="form-label">Parola:</label>
+          <input type="password" class="form-control" name="parola" placeholder="ex: parola123" required>
+        </div>
+        <button type="submit" name="con" class="btn btn-primary">Conecteaza-te!</button>
+      </form>
+      </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 

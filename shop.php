@@ -7,9 +7,6 @@
  $link = mysqli_connect($dbServerName ,$dbUserName ,$dbPassword ,$dbName);
 
     session_start();
-    ?>
-    <h1><?php echo "Hi ".$_SESSION['nume'];?></h1>
-    <?php
 ?>
 <!doctype html>
 <html lang="en">
@@ -29,60 +26,92 @@
     </style>
   </head>
   <body>
-  <form method="post" action="myaccount.php" align="right">
-    <input type="submit" name="con" value="Contul meu">
-        </form>
-        <form method="post" action="comenzilemele.php" align="right">
-    <input type="submit" name="con" value="Comenzile mele">
-        </form>
-        <form method="post" action="main.php" align="right" style="margin-bottom:10px;">
-    <input type="submit" name="con" value="Deconecteaza-te!">
-        </form>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="shop.php">E-shop</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                    <form method="post" action="myaccount.php">
+                    <button class="btn btn-outline-primary" name="con" type="submit">Contul meu</button>
+                    </form>
+                    </li>
+                    <li class="nav-item" style="margin-left:10px;">
+                    <form method="post" action="comenzilemele.php">
+                    <button class="btn btn-outline-primary" name="con" type="submit">Comenzile mele</button>
+                    </form>
+                    </li>
+                </ul>
+                <form method="post" action="main.php" align="right">
+                    <button class="btn btn-outline-danger" name="con" type="submit">Deconecteaza-te!</button>
+                </form>
+                </div>
+            </div>
+            </nav>
 
-    <div><?php
+    <div><h1>Produse:</h1><?php
     $query = "SELECT * FROM Produse ";
 
 if ($result = mysqli_query($link, $query))
 {
    while($row = mysqli_fetch_assoc($result))
-   {     
+   {     ?><div class="card" style="margin: 20px 100px 20px 100px;">
+    <div class="card-header"><?php
        foreach($row as $key => $val)
        {
            if($key === 'id_produs'){
-           ?><div style="border-style: solid;"><br><h3>ID produs</h3><?php
            echo $val;
-           ?><br><?php
+           ?></div>
+           <div class="card-body"><?php
            }
            if($key === 'nume_produs'){
-            ?><br><h3>Nume produs:</h3><?php
+            ?><h5 class="card-title"><?php
             echo $val;
-            ?><br><?php
+            ?></h5><?php
             }
             if($key === 'stoc'){
-                ?><br><h3>Stoc:</h3><?php
+                ?><p class="card-text">Stoc: <?php
                 echo $val;
-                ?><br><?php
+                ?></p><?php
                 }
-                if($key === 'valoare_unitara'){
-                    ?><br><h3>Pret:</h3><?php
+                if($key === 'vandute'){
+                    ?><p class="card-text">Vandute: <?php
                     echo $val;
-                    ?><br><?php
+                    ?></p><?php
+                    }
+                if($key === 'valoare_unitara'){
+                    ?><p class="card-text">Pret: <?php
+                    echo $val;
+                    ?></p><?php
                     }
                     if($key === 'garantie'){
-                        ?><br><h3>Garantie:</h3><?php
+                        ?><p class="card-text">Garantie: <?php
                         echo $val;
-                        ?><br></div><br><?php
+                        ?></p></div></div><?php
                         }
        }      
    }
 }?>
-        <br><br>
-        <h2>Comanda aici!</h2>
-        <form method="post" action="comanda.php">
-        ID PRODUS:<input type="number" name="id" value="id"><br><br>
-        CANTITATE:<input type="number" name="cantitate" value="cantitate"><br><br>
-            <input type="submit" name="comanda" value="Comanda!">
-        </form>
+                      <div style="margin: 50px 20px 50px 20px;"> 
+                          <form class="row g-3" method="post" action="comanda.php">
+                             <h2>Comanda aici!</h2>
+                            <div class="col-auto">
+                                <label for="id_produs">ID PRODUS:</label>
+                                <input type="textarea" name="id" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" placeholder="ex: produs 1">
+                            </div>
+                            <div class="col-auto">
+                                <label for="cantitate">Cantitate:</label>
+                                <input type="textarea" name="cantitate" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" placeholder="ex: 2 bucati">
+                            </div>
+                            <div class="col-auto">
+                            <button type="submit" name="comanda" class="btn btn-outline-success">Comanda!</button>
+                            </div>
+                            </form>
+                      </div>
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
