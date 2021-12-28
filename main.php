@@ -23,7 +23,7 @@
     <span class="navbar-brand mb-0 h1">E-shop</span>
   </div>
 </nav>
-        <h1>Bine ati venit pe magazinul nostru online!</h1>
+        <h1 align="center">Bine ati venit pe magazinul nostru online!</h1>
         <div class="container" style="margin-top:100px;">
         <div class="row">
           <div class="col" align="center">
