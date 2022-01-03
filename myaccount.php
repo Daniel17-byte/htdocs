@@ -34,6 +34,11 @@
                     <button class="btn btn-outline-primary" name="con" type="submit">Comenzile mele</button>
                     </form>
                     </li>
+                    <li class="nav-item" style="margin-left:10px;">
+                    <form method="post" action="rapoarte.php">
+                    <button class="btn btn-outline-primary" name="con" type="submit">Rapoarte</button>
+                    </form>
+                    </li>
                 </ul>
                 <form method="post" action="main.php" align="right">
                     <button class="btn btn-outline-danger" name="con" type="submit">Deconecteaza-te!</button>

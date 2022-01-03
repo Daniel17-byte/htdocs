@@ -44,6 +44,11 @@
                     <button class="btn btn-outline-primary" name="con" type="submit">Comenzile mele</button>
                     </form>
                     </li>
+                    <li class="nav-item" style="margin-left:10px;">
+                    <form method="post" action="rapoarte.php">
+                    <button class="btn btn-outline-primary" name="con" type="submit">Rapoarte</button>
+                    </form>
+                    </li>
                 </ul>
                 <form method="post" action="main.php" align="right">
                     <button class="btn btn-outline-danger" name="con" type="submit">Deconecteaza-te!</button>
@@ -55,8 +60,10 @@
         <h1>Comenzile mele:</h1>
         <div><?php
     $var=$_SESSION['id'];
+    $var2;
+    $var3;
+    $var4;
     $query = "SELECT * FROM Comenzi Where id_client = '$var';";
-
 if ($result = mysqli_query($link, $query))
 {
     $nr = 1;
@@ -67,18 +74,74 @@ if ($result = mysqli_query($link, $query))
    echo $nr;
        foreach($row as $key => $val)
        {
+        if($key === 'id_comanda'){
+            ?>
+            </div>
+                 <div class="card-body">
+            <p class="card-text">Nume: <?php
+            echo $_SESSION['nume'];
+            ?></p><?php
+            }
+            if($key === 'id_comanda'){
+                ?>
+                <p class="card-text">Prenume: <?php
+                echo $_SESSION['prenume'];
+                ?></p><?php
+                }
            if($key === 'id_comanda'){
            ?>
-           </div>
-                <div class="card-body">
            <p class="card-text">Numarul comenzii: <?php
            echo $val;
+           $var2 = $val;
            ?></p><?php
            }
+
             if($key === 'data_comenzii'){
                 ?><p class="card-text">Data comenzii: <?php
                 echo $val;
                 ?></p>
+                <?php
+                    $qry = "SELECT * FROM Cos_comanda Where id_comanda = '$var2' LIMIT 1; ";
+                    if ($result2 = mysqli_query($link, $qry))
+                    {
+                        while($row2 = mysqli_fetch_assoc($result2))
+                        {
+                            foreach($row2 as $key => $val)
+                            {
+                                if($key === 'id_produs'){
+                                    ?>
+                                    <p class="card-text">Id Produs: <?php
+                                    echo $val;
+                                    $var3=$val;
+                                    ?></p><?php
+                                    }
+                                    if($key === 'cantitate'){
+                                        ?>
+                                        <p class="card-text">Cantitate: <?php
+                                        echo $val;
+                                        $var4=$val;
+                                        ?></p><?php
+                                        }
+                            }
+                        }
+                    }
+                    $qry3 = "SELECT * FROM Produse Where id_produs = '$var3' LIMIT 1; ";
+                    if ($result3 = mysqli_query($link, $qry3))
+                    {
+                        while($row3 = mysqli_fetch_assoc($result3))
+                        {
+                            foreach($row3 as $key => $val)
+                            {
+                                if($key === 'valoare_unitara'){
+                                    ?>
+                                    <p class="card-text">Valoarea Totala: <?php
+                                    echo $val*$var4;
+                                    ?></p><?php
+                                    }
+                            }
+                        }
+                    }
+                ?>
                 </div>
                 </div><?php
                 }

@@ -13,7 +13,7 @@
             $data=mysqli_fetch_assoc($result);
             $idComanda = $data['total'] + 1;
             $idClient = $_SESSION['id'];
-            $data = date("Y-m-d");
+            $data = date("Y-m-d-h-m-s");
             $idProdus = $_POST['id'];
             $cantitate = $_POST['cantitate'];
             $result1 = mysqli_query($link, "Call VanzareProd($idComanda, $idClient, '$data', $cantitate, $idProdus);");
