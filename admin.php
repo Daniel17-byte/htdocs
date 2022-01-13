@@ -6,7 +6,14 @@
 
  $link = mysqli_connect($dbServerName ,$dbUserName ,$dbPassword ,$dbName);
 
-    session_start();
+ session_start();
+ if($_SESSION['email']!="lungud63@yahoo.com"){
+    ?>
+    <script type="text/javascript">
+    window.location = "shop.php";
+    </script>      
+    <?php
+ }
 ?>
 <!doctype html>
 <html lang="en">
@@ -16,7 +23,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <title>Shop</title>
+    <title>Contul meu</title>
     <style>
       .footer {
     margin-top:5%;
@@ -67,67 +74,48 @@
             </div>
             </nav>
 
-    <div><h1>Produse:</h1><?php
-    $query = "SELECT * FROM Produse ";
+        <div style="margin-left: 50px;margin-right:300px;">
+        <form action="produs.php" method="post">
+            <div class="container">
+                <h1>Adaugare produs</h1>
+                <div class="mb-3">
+                <label for="nume" class="form-label"><b>Nume Produs:</b></label>
+                <input type="textarea" class="form-control" name="numeprodus" placeholder="ex: Camera Foto" required>
+                </div>
+                <div class="mb-3">
+                <label for="valoareunitara" class="form-label"><b>Valoare Unitara:</b></label>
+                <input type="textarea" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="form-control"  name="valoareunitara" placeholder=" ex: 500" required>
+                </div>
+                <div class="mb-3">
+                <label for="stoc" class="form-label"><b>Stoc:</b></label>
+                <input type="textarea" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="form-control"  name="stoc" placeholder=" ex: 25" required>
+                </div>
+                <div class="mb-3">
+                <label for="vandute" class="form-label"><b>Vandute:</b></label>
+                <input type="textarea" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="form-control"  name="vandute" placeholder=" ex: 10" required>
+                </div>
+                <div class="mb-3">
+                <label for="vandute" class="form-label"><b>Garantie:</b></label>
+                <input type="textarea" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="form-control"  name="garantie" min="0" max="5" placeholder=" ex: 5" required>
+                </div>
+                <button type="submit" name="adauga" class="btn btn-primary">Adauga!</button>
+            </div>
+        </form>
+    </div>   
 
-if ($result = mysqli_query($link, $query))
-{
-   while($row = mysqli_fetch_assoc($result))
-   {     ?><div class="card" style="margin: 20px 100px 20px 100px;">
-    <div class="card-header"><?php
-       foreach($row as $key => $val)
-       {
-           if($key === 'id_produs'){
-           echo $val;
-           ?></div>
-           <div class="card-body"><?php
-           }
-           if($key === 'nume_produs'){
-            ?><h5 class="card-title"><?php
-            echo $val;
-            ?></h5><?php
-            }
-            if($key === 'stoc'){
-                ?><p class="card-text">Stoc: <?php
-                echo $val;
-                ?></p><?php
-                }
-                if($key === 'vandute'){
-                    ?><p class="card-text">Vandute: <?php
-                    echo $val;
-                    ?></p><?php
-                    }
-                if($key === 'valoare_unitara'){
-                    ?><p class="card-text">Pret: <?php
-                    echo $val;
-                    ?></p><?php
-                    }
-                    if($key === 'garantie'){
-                        ?><p class="card-text">Garantie: <?php
-                        echo $val;
-                        ?></p></div></div><?php
-                        }
-       }      
-   }
-}?>
-                      <div style="margin: 50px 20px 50px 20px;"> 
-                          <form class="row g-3" method="post" action="comanda.php">
-                             <h2>Comanda aici!</h2>
+    <div style="margin-left: 50px;margin-right:300px; margin-top:50px;"> 
+                          <form class="row g-3" method="post" action="produs.php">
+                             <h1>Inlaturare produs</h1>
                             <div class="col-auto">
                                 <label for="id_produs">ID PRODUS:</label>
                                 <input type="textarea" name="id" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" placeholder="ex: produs 1">
                             </div>
                             <div class="col-auto">
-                                <label for="cantitate">Cantitate:</label>
-                                <input type="textarea" name="cantitate" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" placeholder="ex: 2 bucati">
-                            </div>
-                            <div class="col-auto">
-                            <button type="submit" name="comanda" class="btn btn-outline-success">Comanda!</button>
+                            <button type="submit" name="sterge" class="btn btn-outline-danger">Sterge!</button>
                             </div>
                             </form>
                       </div>
 
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     

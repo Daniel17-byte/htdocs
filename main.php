@@ -24,6 +24,7 @@
   </div>
 </nav>
         <h1 align="center">Bine ati venit pe magazinul nostru online!</h1>
+        <h2 align="center">Locu in care gasesti cele mai bune produse electronice dintr-o gama variata de produse!</h2>
         <div class="container" style="margin-top:100px;">
         <div class="row">
           <div class="col" align="center">

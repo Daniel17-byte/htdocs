@@ -49,6 +49,16 @@
                     <button class="btn btn-outline-primary" name="con" type="submit">Rapoarte</button>
                     </form>
                     </li>
+                    <li class="nav-item" style="margin-left:10px;">
+                    <form method="post" action="contact.php">
+                    <button class="btn btn-outline-primary" name="con" type="submit">Contact</button>
+                    </form>
+                    </li>
+                    <li class="nav-item" style="margin-left:10px;">
+                    <form method="post" action="admin.php">
+                    <button class="btn btn-outline-primary" name="con" type="submit">Admin</button>
+                    </form>
+                    </li>
                 </ul>
                 <form method="post" action="main.php" align="right">
                     <button class="btn btn-outline-danger" name="con" type="submit">Deconecteaza-te!</button>
@@ -89,13 +99,8 @@ if ($result = mysqli_query($link, $query))
                 ?></p><?php
                 }
            if($key === 'id_comanda'){
-           ?>
-           <p class="card-text">Numarul comenzii: <?php
-           echo $val;
            $var2 = $val;
-           ?></p><?php
            }
-
             if($key === 'data_comenzii'){
                 ?><p class="card-text">Data comenzii: <?php
                 echo $val;
